@@ -1,0 +1,16 @@
+---
+- hosts: my
+  become: yes
+
+  tasks:
+    - name: Установить tuned
+      yum:
+        name: tuned
+        state: present
+    
+    - name: Запустить tuned
+      service:
+        name: tuned
+        state: started
+        enabled: yes
+        

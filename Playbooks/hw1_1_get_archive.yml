@@ -1,0 +1,20 @@
+---
+ - hosts: my
+   become: yes
+  
+   tasks:
+     - name: Скачать архив Apache Kafka
+       get_url:
+         url: https://downloads.apache.org/kafka/3.7.1/kafka-3.7.1-src.tgz 
+         dest: /tmp/kafka.tgz
+        
+     - name: Создать директорию для распаковки
+       file:
+         path: /opt/kafka
+         state: directory
+        
+     - name: Распаковать архив Apache Kafka
+       unarchive:
+         src: /tmp/kafka.tgz
+         dest: /opt/kafka
+         remote_src: yes

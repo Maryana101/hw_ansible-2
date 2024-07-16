@@ -1,0 +1,11 @@
+---
+- hosts: my
+  become: yes
+  vars:
+    new_motd_text: "Отличного дня!"
+  
+  tasks:    
+    - name: Изменить приветствие motd
+      lineinfile:
+        path: /etc/motd
+        line: "{{ new_motd_text }}"

@@ -1,0 +1,11 @@
+---
+- hosts: my
+  become: yes
+  vars:
+    new_motd_text: "Хорошего дня!"
+    
+  tasks:      
+    - name: Модифицировать приветствие motd
+      copy:
+        dest: /etc/motd
+        content: "Ваш ip {{ ansible_default_ipv4.address }}, hostname {{ ansible_hostname }}. {{ new_motd_text }}"
